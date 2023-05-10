@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { Link } from 'react-router-dom';
 import { Typography, TextField, Button } from '@mui/material';
 
 
@@ -68,7 +69,7 @@ const BookingPage = () => {
           }}
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary"component={Link} to="/pay">
           Забронювати
         </Button>
       </form>

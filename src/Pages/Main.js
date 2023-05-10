@@ -3,7 +3,15 @@ import Slider from "react-slick";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Image from '../Images/drivemenow.png';
+import fiesta from '../Images/fiesta.png';
+import logan from '../Images/logan.png';
 import peugeot from '../Images/peugeot.png';
+import kia from '../Images/kia.png';
+import corolla from '../Images/corolla.png';
+import skoda from '../Images/skoda.png';
+import X5M from '../Images/X5M.png';
+import q7 from '../Images/q7.png';
+import prado from '../Images/prado.png';
 import '../Styles/Carousel.css';
 
 import Grid from '@mui/material/Grid';
@@ -40,7 +48,7 @@ const styles = {
     fontSize: '36px',
     fontWeight: 'bold',
     color: '#FFFFFF',
-    marginTop: '100px',
+    marginTop: '20px',
     marginBottom: '30px',
 
   },
@@ -59,6 +67,9 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 1,
   speed: 500,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  cssEase: "linear",
 };
   
  function Container() {
@@ -75,7 +86,7 @@ const settings = {
           <Box sx={styles.container}>
             <Typography sx={styles.heading}>DRIVEMENOW</Typography>
             <Typography sx={styles.content}>
-            З 2000 року наша Компанія з оренди автомобілів є синонімом професіоналізму, відмінного обслуговування та розумних цін.<br />
+            З 2023 року наша Компанія з оренди автомобілів є синонімом професіоналізму, відмінного обслуговування та розумних цін.<br />
               <span className='beg' style={{ display: 'block', marginTop: '30px'}}>Співробітники компанії «DriveMeNow» поділяють думку про те, що, пропонуючи в оренду найякісніші та найдоступніші транспортні засоби, ми можемо змінити життя людей на краще. Якщо вам потрібна допомога з плануванням важливої поїздки, або просто потрібна порада щодо вибору автомобіля для вирішення конкретного завдання, заходьте до одного з наших офісів.</span>
             </Typography>
           </Box>
@@ -83,22 +94,31 @@ const settings = {
         <Grid id="slider-container">
         <Slider {...settings}>
           <div className="imga">
-            <img src={peugeot}/>
+            <img src={fiesta}/>
+          </div>
+          <div className="imga"> 
+            <img src={logan}/>
           </div>
           <div className="imga"> 
             <img src={peugeot}/>
           </div>
           <div className="imga"> 
-            <img src={peugeot}/>
+            <img src={kia}/>
           </div>
           <div className="imga"> 
-            <img src={peugeot}/>
+            <img src={corolla}/>
           </div>
           <div className="imga"> 
-            <img src={peugeot}/>
+            <img src={skoda}/>
           </div>
           <div className="imga"> 
-            <img src={peugeot}/>
+            <img src={X5M}/>
+          </div>
+          <div className="imga"> 
+            <img src={q7}/>
+          </div>
+          <div className="imga"> 
+            <img src={prado}/>
           </div>
         </Slider>
         </Grid>

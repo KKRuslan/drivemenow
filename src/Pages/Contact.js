@@ -10,33 +10,20 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      // light: will be calculated from palette.primary.main,
       main: '#ffffff',
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
       light: '#0066ff',
       main: '#0044ff',
-      // dark: will be calculated from palette.secondary.main,
       contrastText: '#ffcc00',
     },
-    // Provide every color token (light, main, dark, and contrastText) when using
-    // custom colors for props in Material UI's components.
-    // Then you will be able to use it like this: `<Button color="custom">`
-    // (For TypeScript, you need to add module augmentation for the `custom` value)
     custom: {
       light: '#ffa726',
       main: '#f57c00',
       dark: '#ef6c00',
       contrastText: 'rgba(0, 0, 0, 0.87)',
     },
-    // Used by `getContrastText()` to maximize the contrast between
-    // the background and the text.
     contrastThreshold: 3,
-    // Used by the functions below to shift a color's luminance by approximately
-    // two indexes within its tonal palette.
-    // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset: 0.3,
   },
 });
@@ -49,6 +36,33 @@ const useStyles = makeStyles({
     marginTop: 100,
     marginLeft: 250,
     marginBottom: 200,
+  },
+  leftColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingLeft: 200,
+    paddingTop: 100,
+    '& > *': {
+      marginTop: 20,
+    },
+  },
+  icon: {
+    fontSize: 60,
+    marginRight: 10,
+    verticalAlign: 'middle',
+  },
+  title: {
+    display: 'inline-block',
+    fontWeight: 'bold',
+    fontSize: '1.8rem',
+    marginLeft: 10,
+    marginBottom: 20,
+  },
+  contact: {
+    fontSize: '1.3rem',
+    marginLeft: 10,
   },
 });
 
@@ -114,32 +128,56 @@ const ContactForm = () => {
   );
 };
 
+const LeftColumn = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.leftColumn}>
+      <div>
+        <HeadsetMicIcon className={classes.icon} />
+        <Typography variant="h3" className={classes.title}>
+          Клієнтська підтримка 24/7
+        </Typography>
+        <div className={classes.contact}>
+          <p>+38(099) 999-9-999</p>
+          <p>drivemenow@gmail.com</p>
+        </div>
+      </div>
+      <div>
+        <GradeSharpIcon className={classes.icon} />
+        <Typography variant="h3" className={classes.title}>
+          Рекламні та інші пропозиції:
+        </Typography>
+        <div className={classes.contact}>
+          <p>drivemenow@gmail.com</p>
+        </div>
+      </div>
+      <div>
+        <HandshakeIcon className={classes.icon} />
+        <Typography variant="h3" className={classes.title}>
+          Співпраця та інвестування:
+        </Typography>
+        <div className={classes.contact}>
+          <p>drivemenow@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
 const ContactPage = () => {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={6}>
-        <div>
-          <HeadsetMicIcon ></HeadsetMicIcon>
-          <Typography variant='h3'  mt={2} ml={15} fontSize='rem'>Клієнтська підтримка 24/7</Typography>
-          <p>+38(097) 444-5-222</p>
-          <p>customerservice@getmancar.com.ua</p>
-          <GradeSharpIcon></GradeSharpIcon>
-          <Typography variant='h3'  mt={2} ml={15} fontSize='rem'>Рекламні та інші пропозиції:</Typography>
-          <p>reklama@getmancar.com.ua</p>
-          <HandshakeIcon ></HandshakeIcon>
-          <Typography variant='h3'  mt={2} ml={15} fontSize='rem'>Співпраця та інвестування:</Typography>
-          <p>together@getmancar.com.ua</p>
-        </div>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <div>
-          <ContactForm />
-        </div>
-      </Grid>
+    <Grid item xs={12} md={6}>
+      <LeftColumn />
     </Grid>
-  );
+    <Grid item xs={12} md={6}>
+      <div>
+        <ContactForm />
+      </div>
+    </Grid>
+  </Grid>
+);
 };
 
 export default ContactPage;

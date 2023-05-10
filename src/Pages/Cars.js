@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 import fiesta from '../Images/fiesta.png';
 import logan from '../Images/logan.png';
 import peugeot from '../Images/peugeot.png';
+import kia from '../Images/kia.png';
+import corolla from '../Images/corolla.png';
+import hyundai from '../Images/hyundai.png';
+import X5M from '../Images/X5M.png';
+import q7 from '../Images/q7.png';
+import prado from '../Images/prado.png';
+import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
+import HdrAutoIcon from '@mui/icons-material/HdrAuto';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
+
+
 
 import { Grid, Card, CardContent, CardMedia, CardActions, Button, Typography, CardActionArea, Tabs, Tab } from '@mui/material';
 
@@ -11,110 +23,135 @@ const cars = [
     id: 1,
     image: fiesta,
     name: 'Ford fiesta',
-    description: 'Короткий опис машини 1',
-    price: 100,
-    category: 'economy'
+    price: 30,
+    category: 'economy',
+    fuelType: 'Бензин',
+    transmissionType: 'Механічна',
+    engineCapacity: '1.2 л',
+    numberOfSeats: '5',
   },
   {
     id: 2,
     image: logan,
     name: 'Renault logan',
-    description: 'Короткий опис машини 2',
-    price: 100,
-    category: 'economy'
+    price: 30,
+    category: 'economy',
+    fuelType: 'Бензин',
+    transmissionType: 'Механічна',
+    engineCapacity: '1.6 л',
+    numberOfSeats: '5',
   },
   {
     id: 3,
     image: peugeot,
     name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'economy'
+    price: 33,
+    category: 'economy',
+    fuelType: 'Бензин',
+    transmissionType: 'Автоматична',
+    engineCapacity: '1.2 л',
+    numberOfSeats: '5',
   },
   {
     id: 4,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'comfort'
+    image: kia,
+    name: 'Kia Ceed 2022',
+    price: 40,
+    category: 'comfort',
+    fuelType: 'Дизель',
+    transmissionType: 'Автоматична',
+    engineCapacity: '1.6 л',
+    numberOfSeats: '5',
   },
   {
     id: 5,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'comfort'
+    image: corolla,
+    name: 'Toyota Corolla',
+    price: 42,
+    category: 'comfort',
+    fuelType: 'Гібрид',
+    transmissionType: 'Автоматична',
+    engineCapacity: '1.8 л',
+    numberOfSeats: '5',
   },
   {
     id: 6,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'comfort'
+    image: hyundai,
+    name: 'Hyundai Elantra',
+    price: 45,
+    category: 'comfort',
+    fuelType: 'Бензин',
+    transmissionType: 'Автоматична',
+    engineCapacity: '2.0 л',
+    numberOfSeats: '5',
   },
   {
     id: 7,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'vip'
+    image: X5M,
+    name: 'BMW X5M',
+    price: 180,
+    category: '4x4',
+    fuelType: 'Бензин',
+    transmissionType: 'Автоматична',
+    engineCapacity: '4.4 л',
+    numberOfSeats: '5',
   },
   {
     id: 8,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'vip'
+    image: prado,
+    name: 'Land Cruiser Prado',
+    price: 150,
+    category: '4x4',
+    fuelType: 'Дизель',
+    transmissionType: 'Автоматична',
+    engineCapacity: '3.0 л',
+    numberOfSeats: '7',
   },
   {
     id: 9,
-    image: peugeot,
-    name: 'Peugeot 301',
-    description: 'Короткий опис машини 2',
-    price: 200,
-    category: 'vip'
+    image: q7,
+    name: 'Audi Q7',
+    price: 130,
+    category: '4x4',
+    fuelType: 'Дизель',
+    transmissionType: 'Автоматична',
+    engineCapacity: '3.0 л',
+    numberOfSeats: '7',
   },
 ];
 
 function CarCard({ car }) {
   return (
-    <Grid item xs={12} md={6}>
-    <Card sx={{ maxWidth: 345, background: 'transparent', height: '100%', boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.4)'}}>
+    <Grid item xs={12} md={6} ml={4}>
+    <Card sx={{ maxWidth: 345, background: 'transparent', height: '100%', boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.4)' ,color: 'white'}}>
       <CardActionArea>
       <CardMedia
   component='img'
-  height='100%'
+  height='200'
   image={car.image}
   alt={car.name}
   sx={{
     objectFit: 'contain',
-    backgroundColor: 'transparent',
-    backgroundClip: 'content-box',
-    opacity: 0.8,
-    '& img': {
-      objectFit: 'contain',
-      filter: 'brightness(0) invert(1)',
-      width: '100%',
-      height: '100%',
-    },
   }}
 />
 
         <CardContent>
-        <Typography gutterBottom variant="h5" component="div" color="white">
+        <Typography gutterBottom variant="h5" component="div" color="white" >
   {car.name}
 </Typography>
-<Typography variant="body2" color="white">
-  {car.description}
+<Typography variant="h6" color="primary" sx={{ color: 'white' ,ml: 1}}>
+  {car.price}$ /день
 </Typography>
-<Typography variant="h6" color="primary" sx={{ color: 'white' }}>
-  {car.price} грн/день
-</Typography>
+            <Typography variant="body2" >
+              <LocalGasStationIcon sx={{ fontSize: 16, ml: 1, mr: 2 , mt: 2}} />
+              {car.fuelType}
+              <HdrAutoIcon sx={{ fontSize: 16, ml: 1, mr: 2 }}/>
+              {car.transmissionType}
+              <PeopleAltIcon sx={{ fontSize: 16, ml: 1, mr: 2 , mt: 2}} /> 
+              {car.numberOfSeats} місць 
+              <DriveEtaIcon sx={{ fontSize: 16, ml: 1, mr: 2 }} />
+              {car.engineCapacity}
+            </Typography>
 
         </CardContent>
       </CardActionArea>
@@ -142,14 +179,12 @@ function App() {
      <Tabs
   value={selectedCategory}
   onChange={handleCategoryChange}
-  variant="scrollable"
-  scrollButtons="auto"
-  sx={{ margin: '0 auto' }} // додайте цей рядок
+  sx={{ ml:'32%'}}
 >
   <Tab label="Всі" value="all" />
   <Tab label="Економ" value="economy" />
   <Tab label="Комфорт" value="comfort" />
-  <Tab label="VIP" value="vip" />
+  <Tab label="4Х4 Преміум" value="4x4" />
 </Tabs>
       <Grid container spacing={2}>
   {filteredCars.map((car) => (

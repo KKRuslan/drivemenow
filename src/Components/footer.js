@@ -27,14 +27,10 @@ const Footer = () => {
             </Typography>
           </Box>
           <Box>
-            <Typography variant="h6" component="h2" sx={{ mb: 2 }}>
-              Product
-            </Typography>
             <Stack spacing={1.5}>
-              <Link href="#" color="inherit">Teams</Link>
-              <Link href="#" color="inherit">Talent</Link>
-              <Link href="#" color="inherit">Advertising</Link>
-              <Link href="#" color="inherit">Enterprise</Link>
+              <Link href="/" color="inherit">Головна</Link>
+              <Link href="/contact" color="inherit">Зв'язатися з нами</Link>
+              <Link href="/cars" color="inherit">Наші автомобілі</Link>
             </Stack>
           </Box>
           <Box>
