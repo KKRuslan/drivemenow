@@ -18,7 +18,7 @@ import DriveEtaIcon from '@mui/icons-material/DriveEta';
 
 import { Grid, Card, CardContent, CardMedia, CardActions, Button, Typography, CardActionArea, Tabs, Tab } from '@mui/material';
 
-const cars = [
+export const cars = [
   {
     id: 1,
     image: fiesta,
@@ -121,53 +121,53 @@ const cars = [
 ];
 
 function CarCard({ car }) {
+  
   return (
-    <Grid item xs={12} md={6} ml={4}>
-    <Card sx={{ maxWidth: 345, background: 'transparent', height: '100%', boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.4)' ,color: 'white'}}>
-      <CardActionArea>
-      <CardMedia
-  component='img'
-  height='200'
-  image={car.image}
-  alt={car.name}
-  sx={{
-    objectFit: 'contain',
-  }}
-/>
+    <Grid item xs={12} sm={6} md={4}>
+      <Card sx={{ maxWidth: '100%', background: 'transparent', boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.4)', color: 'white', height: '100%' }}>
+        <CardActionArea sx={{ height: '100%' }}>
+          <CardMedia
+            component='img'
+            height='200'
+            image={car.image}
+            alt={car.name}
+            sx={{
+              objectFit: 'contain',
+            }}
+          />
 
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="div" color="white" >
-  {car.name}
-</Typography>
-<Typography variant="h6" color="primary" sx={{ color: 'white' ,ml: 1}}>
-  {car.price}$ /день
-</Typography>
-            <Typography variant="body2" >
-              <LocalGasStationIcon sx={{ fontSize: 16, ml: 1, mr: 2 , mt: 2}} />
+          <CardContent sx={{ flexGrow: 1 }}>
+            <Typography gutterBottom variant="h5" component="div" color="white">
+              {car.name}
+            </Typography>
+            <Typography variant="h6" color="primary" sx={{ color: 'white', ml: 1 }}>
+              {car.price}$ /день
+            </Typography>
+            <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+              <LocalGasStationIcon sx={{ fontSize: '1rem', mr: 1 }} />
               {car.fuelType}
-              <HdrAutoIcon sx={{ fontSize: 16, ml: 1, mr: 2 }}/>
+              <HdrAutoIcon sx={{ fontSize: '1rem', ml: 1, mr: 1 }} />
               {car.transmissionType}
-              <PeopleAltIcon sx={{ fontSize: 16, ml: 1, mr: 2 , mt: 2}} /> 
-              {car.numberOfSeats} місць 
-              <DriveEtaIcon sx={{ fontSize: 16, ml: 1, mr: 2 }} />
+              <PeopleAltIcon sx={{ fontSize: '1rem', ml: 1, mr: 1 }} />
+              {car.numberOfSeats} місць
+              <DriveEtaIcon sx={{ fontSize: '1rem', ml: 1, mr: 1 }} />
               {car.engineCapacity}
             </Typography>
-
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" variant="contained" color="primary"component={Link} to="/booking">
-          Забронювати
-        </Button>
-      </CardActions>
-    </Card>
+          </CardContent>
+          <CardActions>
+            <Button size="small" variant="contained" color="primary" component={Link} to="/booking">
+              Забронювати
+            </Button>
+          </CardActions>
+        </CardActionArea>
+      </Card>
     </Grid>
   );
 }
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  
+
   const handleCategoryChange = (event, newValue) => {
     setSelectedCategory(newValue);
   };
@@ -175,24 +175,18 @@ function App() {
   const filteredCars = selectedCategory === 'all' ? cars : cars.filter(car => car.category === selectedCategory);
 
   return (
-    <div>
-     <Tabs
-  value={selectedCategory}
-  onChange={handleCategoryChange}
-  sx={{ ml:'32%'}}
->
-  <Tab label="Всі" value="all" />
-  <Tab label="Економ" value="economy" />
-  <Tab label="Комфорт" value="comfort" />
-  <Tab label="4Х4 Преміум" value="4x4" />
-</Tabs>
+    <div style={{ minHeight: '100vh'}}>
+      <Tabs value={selectedCategory} onChange={handleCategoryChange} sx={{ marginLeft: '32%' }}>
+        <Tab label="Всі" value="all" />
+        <Tab label="Економ" value="economy" />
+        <Tab label="Комфорт" value="comfort" />
+        <Tab label="4Х4 Преміум" value="4x4" />
+      </Tabs>
       <Grid container spacing={2}>
-  {filteredCars.map((car) => (
-    <Grid item xs={12} sm={6} md={3} lg={4} key={car.id}>
-      <CarCard key={car.id} car={car} />
-    </Grid>
-  ))}
-</Grid>
+        {filteredCars.map((car) => (
+          <CarCard key={car.id} car={car} />
+        ))}
+      </Grid>
     </div>
   );
 }

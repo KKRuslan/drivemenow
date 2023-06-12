@@ -17,9 +17,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 
+
 export default function Header() {
-
-
   const { logout} = useAuth0();
   const { loginWithRedirect } = useAuth0();
   const { isAuthenticated} = useAuth0();
@@ -55,14 +54,11 @@ export default function Header() {
     prevOpen.current = open;
   }, [open]);
 
-
-
-  
   return (
     
-    <Box sx={{ flexGrow: 1  }}>
+    <Box sx={{ flexGrow: 1, position: 'relative',zIndex: 1, }}>
       <AppBar position="static" sx={{ backgroundColor: '#33343f', color: 'white'}}>
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             DRIVEMENOW
           </Typography>
@@ -81,7 +77,6 @@ export default function Header() {
           Наші Автомобілі
         </Button>
         <Button
-
           ref={anchorRef}
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}

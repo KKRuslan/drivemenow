@@ -1,50 +1,33 @@
-import React, { useState } from 'react';
-import { PayPalButtons } from '@paypal/react-paypal-js';
-import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import React from 'react';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { Container, Typography, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles'
 
-function LoginButton() {
-  const [{ isPending }] = usePayPalScriptReducer();
-  const [paid, setPaid] = useState(false);
-  const [error, setError] = useState(null);
-    
-  const handlePayment = async () => {
-    // Обробка платежу
-    const response = await fetch('/api/paypal', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        amount: 10, // сума платежу
-        currency: 'USD' // валюта платежу
-      })
-    });
+const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: '100vh',
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    marginTop: '25vh'
+  },
+}));
 
-    if (response.ok) {
-      setPaid(true);
-    } else {
-      setError('Помилка оплати');
-    }
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+export default function App() {
+  const classes = useStyles();
 
   return (
-    <div>
-      {!paid && <PayPalButtons createOrder={() => handlePayment()} />}
-      {paid && <div>Платіж успішно здійснено!</div>}
-    </div>
+    <Container className={classes.container}>
+      <Grid container justifyContent="center" alignItems="center" className={classes.content}>
+        <Grid item xs={12} sm={8} md={6}>
+          <PayPalScriptProvider options={{ "client-id": "ATm-1JrVHJKx1v86PIbVhQgPROyahGLdnsoegts9YliSO0oD0Vzxc9S78YMwnR8v9Fj5m5NsWq2TpXlF" }}>
+            <PayPalButtons />
+          </PayPalScriptProvider>
+        </Grid>
+      </Grid>
+    </Container>
   );
-};
-
-function MyComponent() {
-  return (
-    <PayPalScriptProvider options={{ "client-id": "ATm-1JrVHJKx1v86PIbVhQgPROyahGLdnsoegts9YliSO0oD0Vzxc9S78YMwnR8v9Fj5m5NsWq2TpXlF" }}>
-      <LoginButton />
-    </PayPalScriptProvider>
-  );
-};
-
-export default MyComponent;
+}

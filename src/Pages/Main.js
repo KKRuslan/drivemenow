@@ -23,6 +23,7 @@ const containerStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundImage: `url(${Image})`,
+    position: 'relative',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: '#FFFFFF',
@@ -68,7 +69,7 @@ const settings = {
   slidesToScroll: 1,
   speed: 500,
   autoplay: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 2000,
   cssEase: "linear",
 };
   
@@ -87,7 +88,7 @@ const settings = {
             <Typography sx={styles.heading}>DRIVEMENOW</Typography>
             <Typography sx={styles.content}>
             З 2023 року наша Компанія з оренди автомобілів є синонімом професіоналізму, відмінного обслуговування та розумних цін.<br />
-              <span className='beg' style={{ display: 'block', marginTop: '30px'}}>Співробітники компанії «DriveMeNow» поділяють думку про те, що, пропонуючи в оренду найякісніші та найдоступніші транспортні засоби, ми можемо змінити життя людей на краще. Якщо вам потрібна допомога з плануванням важливої поїздки, або просто потрібна порада щодо вибору автомобіля для вирішення конкретного завдання, заходьте до одного з наших офісів.</span>
+              <span style={{ display: 'block', marginTop: '30px'}}>Співробітники компанії «DriveMeNow» поділяють думку про те, що, пропонуючи в оренду найякісніші та найдоступніші транспортні засоби, ми можемо змінити життя людей на краще. Якщо вам потрібна допомога з плануванням важливої поїздки, або просто потрібна порада щодо вибору автомобіля для вирішення конкретного завдання, заходьте до одного з наших офісів.</span>
             </Typography>
           </Box>
         </Grid>

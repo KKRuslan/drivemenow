@@ -1,14 +1,13 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, TextField, Button } from '@mui/material';
-
-
+import { Typography, Button, Box, Grid } from '@mui/material';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import '../Styles/Carousel.css';
 
 const BookingPage = () => {
-  const [startDate, setStartDate] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [endTime, setEndTime] = useState('');
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,64 +15,45 @@ const BookingPage = () => {
   };
 
   return (
-    <>
-      <Typography variant="h4">Бронювання</Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id="start-date"
-          label="Дата початку бронювання"
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="start-time"
-          label="Час початку бронювання"
-          type="time"
-          value={startTime}
-          onChange={(e) => setStartTime(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            step: 900, // 15 хвилин
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="end-date"
-          label="Дата закінчення бронювання"
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="end-time"
-          label="Час закінчення бронювання"
-          type="time"
-          value={endTime}
-          onChange={(e) => setEndTime(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            step: 900, // 15 хвилин
-          }}
-          margin="normal"
-        />
-        <Button type="submit" variant="contained" color="primary"component={Link} to="/pay">
-          Забронювати
-        </Button>
-      </form>
-    </>
+    <Grid item xs={12} sm={6} md={4}>
+      <Box minHeight="100vh" display="flex" alignItems="center" justifyContent="center" bgcolor="transparent">
+        <Box p={4} boxShadow={3} borderRadius={4} bgcolor="rgba(255, 255, 255, 0.3)" color='white'>
+          <Typography variant="h4" align="center" mb={4}>
+            Бронювання
+          </Typography>
+          <form onSubmit={handleSubmit} className="form-container">
+            <div className="date-picker-container">
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                placeholderText="Дата початку бронювання"
+                className="form-control"
+                required
+                showTimeSelect
+              />
+               <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                placeholderText="Дата закінчення бронювання"
+                className="form-control"
+                required
+                showTimeSelect
+              />
+            </div>
+            <Button type="submit" variant="contained" color="primary" component={Link} to="/pay" fullWidth>
+              Забронювати
+            </Button>
+          </form>
+        </Box>
+      </Box>
+    </Grid>
   );
 };
 

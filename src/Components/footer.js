@@ -10,7 +10,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: '#33343f', py: 6, color: 'white'}}>
+    <Box sx={{ bgcolor: '#33343f', py: 6, color: 'white', position:'absolute', width:'100%'}}>
       <Container maxWidth="lg">
         <Stack
           direction={{ xs: 'column', md: 'row' }}
