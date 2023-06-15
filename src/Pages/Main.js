@@ -12,6 +12,7 @@ import skoda from '../Images/skoda.png';
 import X5M from '../Images/X5M.png';
 import q7 from '../Images/q7.png';
 import prado from '../Images/prado.png';
+
 import '../Styles/Carousel.css';
 
 import Grid from '@mui/material/Grid';

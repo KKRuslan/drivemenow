@@ -8,7 +8,7 @@ import Cars from './Pages/Cars';
 import Contact from './Pages/Contact';
 import Main from './Pages/Main';
 import Booking from './Pages/Booking';
-import Pay from './Pages/Pay';
+
 
 
 function App() {
@@ -20,8 +20,7 @@ function App() {
         <Route path ="/personal" element={<Personal />} />
         <Route path ="/cars" element={<Cars />} />
         <Route path ="/contact" element={<Contact />} />
-        <Route path ="/booking" element={<Booking />} />
-        <Route path ="/pay" element={<Pay />} />
+        <Route path ="/booking/:carId" element={<Booking />} />
       </Routes> 
       <Footer />
     </div>

@@ -1,127 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import fiesta from '../Images/fiesta.png';
-import logan from '../Images/logan.png';
-import peugeot from '../Images/peugeot.png';
-import kia from '../Images/kia.png';
-import corolla from '../Images/corolla.png';
-import hyundai from '../Images/hyundai.png';
-import X5M from '../Images/X5M.png';
-import q7 from '../Images/q7.png';
-import prado from '../Images/prado.png';
+import { Grid, Card, CardContent, CardMedia, CardActions, Button, Typography, CardActionArea, Tabs, Tab } from '@mui/material';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import HdrAutoIcon from '@mui/icons-material/HdrAuto';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import DriveEtaIcon from '@mui/icons-material/DriveEta';
-
-
-
-import { Grid, Card, CardContent, CardMedia, CardActions, Button, Typography, CardActionArea, Tabs, Tab } from '@mui/material';
-
-export const cars = [
-  {
-    id: 1,
-    image: fiesta,
-    name: 'Ford fiesta',
-    price: 30,
-    category: 'economy',
-    fuelType: 'Бензин',
-    transmissionType: 'Механічна',
-    engineCapacity: '1.2 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 2,
-    image: logan,
-    name: 'Renault logan',
-    price: 30,
-    category: 'economy',
-    fuelType: 'Бензин',
-    transmissionType: 'Механічна',
-    engineCapacity: '1.6 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 3,
-    image: peugeot,
-    name: 'Peugeot 301',
-    price: 33,
-    category: 'economy',
-    fuelType: 'Бензин',
-    transmissionType: 'Автоматична',
-    engineCapacity: '1.2 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 4,
-    image: kia,
-    name: 'Kia Ceed 2022',
-    price: 40,
-    category: 'comfort',
-    fuelType: 'Дизель',
-    transmissionType: 'Автоматична',
-    engineCapacity: '1.6 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 5,
-    image: corolla,
-    name: 'Toyota Corolla',
-    price: 42,
-    category: 'comfort',
-    fuelType: 'Гібрид',
-    transmissionType: 'Автоматична',
-    engineCapacity: '1.8 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 6,
-    image: hyundai,
-    name: 'Hyundai Elantra',
-    price: 45,
-    category: 'comfort',
-    fuelType: 'Бензин',
-    transmissionType: 'Автоматична',
-    engineCapacity: '2.0 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 7,
-    image: X5M,
-    name: 'BMW X5M',
-    price: 180,
-    category: '4x4',
-    fuelType: 'Бензин',
-    transmissionType: 'Автоматична',
-    engineCapacity: '4.4 л',
-    numberOfSeats: '5',
-  },
-  {
-    id: 8,
-    image: prado,
-    name: 'Land Cruiser Prado',
-    price: 150,
-    category: '4x4',
-    fuelType: 'Дизель',
-    transmissionType: 'Автоматична',
-    engineCapacity: '3.0 л',
-    numberOfSeats: '7',
-  },
-  {
-    id: 9,
-    image: q7,
-    name: 'Audi Q7',
-    price: 130,
-    category: '4x4',
-    fuelType: 'Дизель',
-    transmissionType: 'Автоматична',
-    engineCapacity: '3.0 л',
-    numberOfSeats: '7',
-  },
-];
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function CarCard({ car }) {
-  
+  const navigate = useNavigate();
+
+  const handleBookingClick = () => {
+    navigate(`/booking/${car.id}`, { state: { carData: car } });
+  };
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ maxWidth: '100%', background: 'transparent', boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.4)', color: 'white', height: '100%' }}>
@@ -129,7 +22,7 @@ function CarCard({ car }) {
           <CardMedia
             component='img'
             height='200'
-            image={car.image}
+            image={`/Images/${car.image}`}
             alt={car.name}
             sx={{
               objectFit: 'contain',
@@ -155,7 +48,7 @@ function CarCard({ car }) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" variant="contained" color="primary" component={Link} to="/booking">
+            <Button size="small" variant="contained" color="primary" onClick={handleBookingClick}>
               Забронювати
             </Button>
           </CardActions>
@@ -167,6 +60,18 @@ function CarCard({ car }) {
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    // Виконати запит до сервера для отримання списку автомобілів
+    axios.get('http://localhost:3001/api/cars')
+      .then(response => {
+        setCars(response.data);
+      })
+      .catch(error => {
+        console.error('Помилка при отриманні списку автомобілів:', error);
+      });
+  }, []);
 
   const handleCategoryChange = (event, newValue) => {
     setSelectedCategory(newValue);
@@ -175,7 +80,7 @@ function App() {
   const filteredCars = selectedCategory === 'all' ? cars : cars.filter(car => car.category === selectedCategory);
 
   return (
-    <div style={{ minHeight: '100vh'}}>
+    <div style={{ minHeight: '100vh' }}>
       <Tabs value={selectedCategory} onChange={handleCategoryChange} sx={{ marginLeft: '32%' }}>
         <Tab label="Всі" value="all" />
         <Tab label="Економ" value="economy" />
@@ -183,9 +88,10 @@ function App() {
         <Tab label="4Х4 Преміум" value="4x4" />
       </Tabs>
       <Grid container spacing={2}>
-        {filteredCars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
+      {filteredCars.map((car) => (
+  <CarCard key={car.carId} car={car} />
+))}
+
       </Grid>
     </div>
   );
