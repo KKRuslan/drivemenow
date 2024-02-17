@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { makeStyles} from '@mui/styles';
-import { TextField, Button, Grid, Typography } from '@mui/material';
-import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
-import GradeSharpIcon from '@mui/icons-material/GradeSharp';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import React, { useState } from 'react'
+import { makeStyles } from '@mui/styles'
+import { TextField, Button, Grid, Typography } from '@mui/material'
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic'
+import GradeSharpIcon from '@mui/icons-material/GradeSharp'
+import HandshakeIcon from '@mui/icons-material/Handshake'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
@@ -15,7 +14,7 @@ const theme = createTheme({
     contrastThreshold: 3,
     tonalOffset: 0.3,
   },
-});
+})
 
 const useStyles = makeStyles({
   form: {
@@ -53,72 +52,63 @@ const useStyles = makeStyles({
     fontSize: '1.3rem',
     marginLeft: 10,
   },
-});
+})
 
 const ContactForm = () => {
-  const classes = useStyles();
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [topic, setTopic] = useState('');
-  const [question, setQuestion] = useState('');
+  const classes = useStyles()
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [topic, setTopic] = useState('')
+  const [question, setQuestion] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-
-  };
+    event.preventDefault()
+  }
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
       <ThemeProvider theme={theme}>
-      <TextField 
-        label="Ім'я"
-        required
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        style={{ marginBottom: '40px' }}
-      />
-      </ThemeProvider>
-      <ThemeProvider theme={theme}>
-      <TextField
-        label="Номер телефона"
-        type="tel"
-        required
-        value={phone}
-        onChange={(event) => setPhone(event.target.value)}
-        style={{ marginBottom: '40px' }}
-      />
-      </ThemeProvider>
-      <ThemeProvider theme={theme}>
-      <TextField
-        label="Тема питання"
-        required
-        value={topic}
-        onChange={(event) => setTopic(event.target.value)}
-        style={{ marginBottom: '40px' }}
-      />
-      </ThemeProvider>
-      <ThemeProvider theme={theme}>
-      <TextField 
-        label="Ваше питання"
-        required
-        multiline
-        rows={4}
-        value={question}
-        onChange={(event) => setQuestion(event.target.value)}
-        style={{ marginBottom: '40px' }}
-      />
-      </ThemeProvider>
-      <ThemeProvider theme={theme}>
-       <Button type="submit" variant="contained" color="primary">
-        Отправить
-      </Button>
+        <TextField
+          label="Ім'я"
+          required
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          style={{ marginBottom: '40px' }}
+        />
+        <TextField
+          label="Номер телефона"
+          type="tel"
+          required
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          style={{ marginBottom: '40px' }}
+        />
+        <TextField
+          label="Тема питання"
+          required
+          value={topic}
+          onChange={(event) => setTopic(event.target.value)}
+          style={{ marginBottom: '40px' }}
+        />
+        <TextField
+          label="Ваше питання"
+          required
+          multiline
+          rows={4}
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+          style={{ marginBottom: '40px' }}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Отправить
+        </Button>
       </ThemeProvider>
     </form>
-  );
-};
+  )
+}
 
 const LeftColumn = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.leftColumn}>
       <div>
@@ -150,23 +140,22 @@ const LeftColumn = () => {
         </div>
       </div>
     </div>
-  );
-};
-
+  )
+}
 
 const ContactPage = () => {
   return (
     <Grid container spacing={3}>
-    <Grid item xs={12} md={6}>
-      <LeftColumn />
+      <Grid item xs={12} md={6}>
+        <LeftColumn />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <div>
+          <ContactForm />
+        </div>
+      </Grid>
     </Grid>
-    <Grid item xs={12} md={6}>
-      <div>
-        <ContactForm />
-      </div>
-    </Grid>
-  </Grid>
-);
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage
