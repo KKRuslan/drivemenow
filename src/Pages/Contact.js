@@ -55,55 +55,62 @@ const useStyles = makeStyles({
 })
 
 const ContactForm = () => {
+  const [data, setData] = useState({
+    name: '',
+    phone: '',
+    topic: '',
+    question: '',
+  })
   const classes = useStyles()
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [topic, setTopic] = useState('')
-  const [question, setQuestion] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    alert(JSON.stringify(data))
+  }
+  function handleInputChange(e, name) {
+    setData({ ...data, [name]: e.target.value })
   }
 
   return (
-    <form className={classes.form} onSubmit={handleSubmit}>
-      <ThemeProvider theme={theme}>
-        <TextField
-          label="Ім'я"
-          required
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          style={{ marginBottom: '40px' }}
-        />
-        <TextField
-          label="Номер телефона"
-          type="tel"
-          required
-          value={phone}
-          onChange={(event) => setPhone(event.target.value)}
-          style={{ marginBottom: '40px' }}
-        />
-        <TextField
-          label="Тема питання"
-          required
-          value={topic}
-          onChange={(event) => setTopic(event.target.value)}
-          style={{ marginBottom: '40px' }}
-        />
-        <TextField
-          label="Ваше питання"
-          required
-          multiline
-          rows={4}
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-          style={{ marginBottom: '40px' }}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Отправить
-        </Button>
-      </ThemeProvider>
-    </form>
+    <>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <ThemeProvider theme={theme}>
+          <TextField
+            label="Ім'я"
+            required
+            value={data.name}
+            onChange={(e) => handleInputChange(e, 'name')}
+            style={{ marginBottom: '40px' }}
+          />
+          <TextField
+            label="Номер телефона"
+            required
+            value={data.phone}
+            onChange={(e) => handleInputChange(e, 'phone')}
+            style={{ marginBottom: '40px' }}
+          />
+          <TextField
+            label="Тема питання"
+            required
+            value={data.topic}
+            onChange={(e) => handleInputChange(e, 'topic')}
+            style={{ marginBottom: '40px' }}
+          />
+          <TextField
+            label="Ваше питання"
+            required
+            multiline
+            rows={4}
+            value={data.question}
+            onChange={(e) => handleInputChange(e, 'question')}
+            style={{ marginBottom: '40px' }}
+          />
+          <Button type="submit" variant="contained" color="primary">
+            Відправити
+          </Button>
+        </ThemeProvider>
+      </form>
+    </>
   )
 }
 
