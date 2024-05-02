@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/drivemenow/static/css/main.8738765b.css",
+    "main.js": "/drivemenow/static/js/main.1cc89098.js",
+    "static/media/drivemenow.png": "/drivemenow/static/media/drivemenow.8c19d963ef0c09522694.png",
+    "static/media/q7.png": "/drivemenow/static/media/q7.1623e07af926828bd75f.png",
+    "static/media/fiesta.png": "/drivemenow/static/media/fiesta.70e7aee495f622c8dda3.png",
+    "static/media/prado.png": "/drivemenow/static/media/prado.a262ce18e4b592cdd434.png",
+    "static/media/kia.png": "/drivemenow/static/media/kia.231814560fac8f4b9273.png",
+    "static/media/corolla.png": "/drivemenow/static/media/corolla.073d6586d1d8bbd38d64.png",
+    "static/media/peugeot.png": "/drivemenow/static/media/peugeot.22639de2bdfca7c8be20.png",
+    "static/media/X5M.png": "/drivemenow/static/media/X5M.2580e87d734e3f2204fe.png",
+    "static/media/logan.png": "/drivemenow/static/media/logan.7b6042e7c1269d586557.png",
+    "static/media/skoda.png": "/drivemenow/static/media/skoda.345b30c787bb59f5358b.png",
+    "index.html": "/drivemenow/index.html",
+    "main.8738765b.css.map": "/drivemenow/static/css/main.8738765b.css.map",
+    "main.1cc89098.js.map": "/drivemenow/static/js/main.1cc89098.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8738765b.css",
+    "static/js/main.1cc89098.js"
+  ]
+}
